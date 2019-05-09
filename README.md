@@ -5,6 +5,6 @@ Publishing a game on Google Play
 
 - Advertisements
 - Google Play Services 
-- achievements.
-- leaderboards
+- Achievements.
+- Leaderboards
 - Social media.
