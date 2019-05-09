@@ -9,6 +9,7 @@ public class MenuUiManager : MonoBehaviour
     public static MenuUiManager instance;
     public GameObject LeaderboardButton;
     public GameObject AchievementsButton;
+    public AdMobInterstitial adMobInterstitial;
     
     private void Awake(){   
      DontDestroyOnLoad (this.gameObject);
@@ -20,7 +21,7 @@ public class MenuUiManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+     
     }
 
     public void ShowLeaderboard()
@@ -42,6 +43,8 @@ public class MenuUiManager : MonoBehaviour
     // Play will load level1 scene when button is tapped
     public void Play()
     {
+     AdMobBanner.instance.ShowAd();
+     //adMobInterstitial.ShowAd("level1");
      SceneManager.LoadScene ("level1");
      LeaderboardButton.SetActive(false);
      AchievementsButton.SetActive(false);

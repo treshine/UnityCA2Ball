@@ -39,7 +39,7 @@ public class UnityAdManager : MonoBehaviour
         if (PlayerPrefs.HasKey("AdCount"))
         {
             // show an ad after 3 gameovers
-            if (PlayerPrefs.GetInt("AdCount") == 5)
+            if (PlayerPrefs.GetInt("AdCount") == 7)
             {
                 // Check if there is a loaded ad
                 if (Advertisement.IsReady("rewardedVideo"))
