@@ -14,6 +14,16 @@ public class UIManager : MonoBehaviour
     public Text scoreText;
     public Text highScoreText;
     
+    
+    //Twitter Share Link
+    string TWITTER_ADDRESS = "http://twitter.com/intent/tweet";
+    //Language
+    string TWEET_LANGUAGE = "en";
+    //Text to post
+    string textToDisplay="Hey Guys! Check out my score: ";
+    
+    
+    
     private void Awake(){
         if (instance == null) {
             instance = this;
@@ -48,5 +58,10 @@ public class UIManager : MonoBehaviour
     
     public void Menu(){
     	SceneManager.LoadScene ("Menu");
+    }
+    
+    public void ShareScoreOnTwitter () 
+    {
+        Application.OpenURL (TWITTER_ADDRESS + "?text=" + WWW.EscapeURL(textToDisplay) + ScoreManager.instance.score + "&amp;lang=" + WWW.EscapeURL(TWEET_LANGUAGE));
     }
 }
