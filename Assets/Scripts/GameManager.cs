@@ -29,7 +29,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!gameOver)
+        {
+            AchievementManager.instance.CheckAchievements();
+        }
     }
     
     public void GameStart(){
@@ -38,6 +41,8 @@ public class GameManager : MonoBehaviour
         GameObject.Find ("PipeSpawner").GetComponent<PipeSpawner> ().StartSpawingPipes ();
 
     }
+
+   
     
     public void GameOver(){
         gameOver = false;

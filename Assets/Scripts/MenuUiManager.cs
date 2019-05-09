@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuUiManager : MonoBehaviour
 {
-    public static MenuUiManager instance;   
+    public static MenuUiManager instance;
+    public GameObject LeaderboardButton;
+    public GameObject AchievementsButton;
     
     private void Awake(){   
      DontDestroyOnLoad (this.gameObject);
@@ -21,7 +23,7 @@ public class MenuUiManager : MonoBehaviour
         
     }
 
-    public void ShowLeaderbord()
+    public void ShowLeaderboard()
     {
         LeaderboardManager.instance.ShowLeaderboard();
     }
@@ -32,10 +34,17 @@ public class MenuUiManager : MonoBehaviour
         
     }
     
+    public void ShowAchievements()
+    {
+        AchievementManager.instance.ShowAchievements();
+    }
+    
     // Play will load level1 scene when button is tapped
     public void Play()
     {
      SceneManager.LoadScene ("level1");
+     LeaderboardButton.SetActive(false);
+     AchievementsButton.SetActive(false);
     }
 
 
