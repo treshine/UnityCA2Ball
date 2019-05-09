@@ -43,7 +43,8 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         GameObject.Find ("PipeSpawner").GetComponent<PipeSpawner> ().StopSpawningPipes ();
         ScoreManager.instance.StopScore ();
+        LeaderboardManager.instance.AddScoreToLeaderboard();
         UIManager.instance.GameOver ();
-        //UnityAdManager.instance.ShowAd ();
+        UnityAdManager.instance.ShowAd ();
     }
 }

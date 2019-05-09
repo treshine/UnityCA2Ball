@@ -9,7 +9,7 @@ public class BallController : MonoBehaviour
     bool gameOver;
     Rigidbody2D rb; // set to Kinematic type in Unity
     public float upForce; // 200 works well
-    public float rotation;
+    public float rotation;// ball rotation while moving
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,7 @@ public class BallController : MonoBehaviour
             if (Input.GetMouseButtonDown (0)) {
                 started = true;
                 rb.isKinematic = false; // ball is not moving yet
-                //GameManager.instance.GameStart ();
+                GameManager.instance.GameStart (); // start the game
             }
         } 
         // Game is started
@@ -41,6 +41,27 @@ public class BallController : MonoBehaviour
                 // Tap will only add force to y direction 
                 rb.AddForce (new Vector2 (0, upForce));
             }
+        }
+    }
+    
+    void OnCollisionEnter2D(Collision2D col){
+        gameOver = true;
+        GameManager.instance.GameOver ();
+        GetComponent<Animator> ().Play ("ball"); //play ball dead state
+    }
+    
+    void OnTriggerEnter2D(Collider2D col){
+        
+        // player hit Pipe trigger so gameover
+        if (col.gameObject.tag == "Pipe" && !gameOver) {
+            gameOver = true;
+            GameManager.instance.GameOver ();
+
+            GetComponent<Animator> ().Play ("ball");//play ball dead state
+        }
+        // player hit ScoreChecker passing through pipes so increase score
+        if (col.gameObject.tag == "ScoreChecker" && !gameOver) {
+            ScoreManager.instance.IncrementScore ();
         }
     }
 }

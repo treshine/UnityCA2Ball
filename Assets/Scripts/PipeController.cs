@@ -33,4 +33,11 @@ public class PipeController : MonoBehaviour
         upDownSpeed = -upDownSpeed;
         rb.velocity = new Vector2 (speed, upDownSpeed);
     }
+    
+    // whenever pipe goes through a collider
+    void OnTriggerEnter2D(Collider2D col){
+        if (col.gameObject.tag == "PipeDestroyer") {
+            Destroy (gameObject);
+        }
+    }
 }
